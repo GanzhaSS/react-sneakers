@@ -1,12 +1,17 @@
 body {
   margin: 0;
-  font-family: "Inter", system-ui;
+  font-family: 'Inter', system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #244458;
-}
-body svg:hover path {
-  fill: orange;
+
+  svg:hover {
+    path {
+      fill: orange;
+      // stroke: orange;
+    }
+  }
+
 }
 
 h3,
@@ -26,6 +31,8 @@ header {
   border-bottom: 1px solid #EAEAEA;
 }
 
-.content h1 {
-  margin: 0px;
-}/*# sourceMappingURL=index.css.map */
+.content {
+  h1 {
+    margin: 0px;
+  }
+}
