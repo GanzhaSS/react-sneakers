@@ -14,6 +14,10 @@ body {
 
 }
 
+* {
+  font-family: 'Inter', system-ui;
+}
+
 h3,
 p {
   margin: 0;
@@ -42,7 +46,14 @@ header {
   padding: 20px;
   width: 210px;
   border-radius: 40px;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+
   // margin-right: 40px;
+  &:hover {
+    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+  }
 
   h5 {
     font-weight: 400;
@@ -67,4 +78,80 @@ header {
   height: 32px;
   width: 32px;
   cursor: pointer;
+}
+
+.search-block {
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 0 15px;
+}
+
+input {
+  border: 0;
+  padding: 12px;
+  font-size: 16px;
+  color: #C4C4C4;
+  width: 250px;
+}
+
+.favorite {
+  position: absolute;
+  cursor: pointer;
+
+}
+
+.drawer {
+  position: absolute;
+  width: 385px;
+  height: 100%;
+  right: 0;
+  background: #FFFFFF;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.4);
+  z-index: 1;
+}
+
+h2 {
+  margin: 0;
+}
+
+.cartItem {
+  border: 1px solid #F3F3F3;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 20px;
+
+  p,
+  b {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .cartItemImg {
+    height: 70px;
+    width: 70px;
+    background-size: contain;
+    background-position: 0 10px;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+  }
+}
+
+.btnRemove {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
 }
