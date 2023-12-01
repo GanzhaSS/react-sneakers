@@ -102,7 +102,7 @@ input {
 
 .drawer {
   position: absolute;
-  width: 385px;
+  width: 420px;
   height: 100%;
   right: 0;
   background: #FFFFFF;
@@ -154,4 +154,25 @@ h2 {
   &:hover {
     opacity: 1;
   }
+}
+
+.cartToltalBlock {
+  li {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+
+  div {
+    flex: 1;
+    border: 1px;
+    border-bottom: 1px dashed #DFDFDF;
+    position: relative;
+    top: -4px;
+    margin: 0 7px;
+  }
+}
+
+.Items {
+  flex: 1;
 }
