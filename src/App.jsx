@@ -1,46 +1,55 @@
 const App = () => {
   return (
     <div className="wrapper clear">
-      <div className="overlay">
+      <div style={{ display: 'none' }} className="overlay">
         <div className="drawer  d-flex flex-column">
-          <h2 className="mb-30">Корзина</h2>
-          <div className="Items">
+          <h2 className="d-flex mb-30 justify-between">
+            Корзина
+            <img className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
+          </h2>
+
+          <div className="items">
+            <div className="cartItem d-flex align-center mb-20">
+              <div className="cartItemImg" style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }}></div>
+              <div className="mr-20">
+                <p className="mb-5">
+                  Мужские Кроссовки Nike Air Max 270
+                </p>
+                <b>12 999 руб.</b>
+              </div>
+              <img className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
+            </div>
+
+            <div className="cartItem d-flex align-center mb-20">
+              {/* <img className="mr-20" width={70} height={70} src="/img/sneakers/2.jpg" alt="Sneakers" /> */}
+              <div className="cartItemImg" style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }}></div>
+              <div className="mr-20">
+                <p className="mb-5">
+                  Мужские Кроссовки Nike Air Max 270
+                </p>
+                <b>12 999 руб.</b>
+              </div>
+              <img className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
+            </div>
 
           </div>
-          <div className="cartItem d-flex align-center mb-20">
-            <div className="cartItemImg" style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }}></div>
-            <div className="mr-20">
-              <p className="mb-5">
-                Мужские Кроссовки Nike Air Max 270
-              </p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem d-flex align-center mb-20">
-            {/* <img className="mr-20" width={70} height={70} src="/img/sneakers/2.jpg" alt="Sneakers" /> */}
-            <div className="cartItemImg" style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }}></div>
-            <div className="mr-20">
-              <p className="mb-5">
-                Мужские Кроссовки Nike Air Max 270
-              </p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
+
+          <div className="cartToltalBlock">
+            <ul >
+              <li>
+                <span>Итого:</span>
+                <div></div>
+                <b>21 498 руб.</b>
+              </li>
+              <li>
+                <span>Налог 5%:</span>
+                <div></div>
+                <b>1074 руб.</b>
+              </li>
+            </ul>
+            <button className="greenButton">Оформить заказ <img src="/img/icons/arrow.svg" alt="Arrow" /></button>
           </div>
 
-          <ul className="cartToltalBlock">
-            <li>
-              <span>Итого:</span>
-              <div></div>
-              <b>21 498 руб.</b>
-            </li>
-            <li>
-              <span>Налог 5%:</span>
-              <div></div>
-              <b>1074 руб.</b>
-            </li>
-          </ul>
         </div>
 
       </div>
@@ -93,7 +102,7 @@ const App = () => {
           </li>
         </ul>
       </header>
-      <div className="content p-40 mb-40 d-flex align-center justify-between">
+      <div className="content p-40 d-flex align-center justify-between">
         <h1>Все кроссовки</h1>
         <div className="search-block d-flex">
           <img src="/img/icons/search.svg" alt="Search" />
@@ -101,7 +110,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="d-flex justify-between flex-wrap">
+      <div className="d-flex justify-between flex-wrap m-40">
         <div className="card">
           <div className="favorite"><img src="/img/icons/unliked.svg" alt="Unliked" /></div>
           <img width={133} height={112} src="/img/sneakers/1.jpg" alt="" />
