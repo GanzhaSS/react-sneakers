@@ -25,7 +25,8 @@ const App = () => {
           <Card
             title={obj.title}
             price={obj.price}
-            imageURL={obj.imageURL} />
+            imageURL={obj.imageURL}
+            onClick={() => console.log(obj)} />
         ))}
 
       </div>

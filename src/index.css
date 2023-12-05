@@ -34,40 +34,6 @@ header {
   margin: 0px;
 }
 
-.card {
-  border: 1px solid #F3F3F3;
-  padding: 20px;
-  width: 210px;
-  border-radius: 40px;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-  cursor: pointer;
-}
-.card:hover {
-  box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.05);
-  transform: translateY(-5px);
-}
-.card h5 {
-  font-weight: 400;
-  font-size: 14px;
-}
-.card span {
-  font-size: 11px;
-  opacity: 0.5;
-  text-transform: uppercase;
-}
-.card b {
-  font-size: 13px;
-}
-
-.button {
-  background: #FFFFFF;
-  border: 1px solid #F2F2F2;
-  border-radius: 8px;
-  height: 32px;
-  width: 32px;
-  cursor: pointer;
-}
-
 .search-block {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
@@ -80,11 +46,6 @@ input {
   font-size: 16px;
   color: #C4C4C4;
   width: 250px;
-}
-
-.favorite {
-  position: absolute;
-  cursor: pointer;
 }
 
 .drawer {
@@ -195,4 +156,4 @@ h2 {
 }
 .greenButton:active {
   background: #85c832;
-}/*# sourceMappingURL=index.css.map */
+}
