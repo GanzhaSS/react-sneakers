@@ -24,7 +24,7 @@ const Card = (props) => {
                     <b>{props.price}</b>
                 </div>
                 <div>
-                    <img className={styles.plus} onClick={handleAdd} src="/img/icons/btn-plus-empty.svg" alt="Plus" />
+                    <img className={styles.plus} onClick={handleAdd} src={isAdded ? "/img/icons/btn-plus-filled.svg" : "/img/icons/btn-plus-empty.svg"} alt="Plus" />
                 </div>
             </div>
         </div>
