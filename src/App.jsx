@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import Card from './components/Card';
 import Header from "./components/Header";
 import Drawer from './components/Drawer';
@@ -10,8 +10,10 @@ const arrCards = [
   { title: 'Мужские Кроссовки Nike Air Max 2705', price: 12222, imageURL: "/img/sneakers/4.jpg" }
 ]
 const App = () => {
-  const [countAdd, setCountAdd] = useState(0);
+
+  const [cartOpened, setCartOpened] = React.useState(false);
   return (
+
     <div className="wrapper clear">
       <Drawer />
       <Header />
@@ -29,8 +31,7 @@ const App = () => {
             price={obj.price}
             imageURL={obj.imageURL}
             onClickAdd={() => {
-              setCountAdd(countAdd + 1);
-              console.log(`Добавили в корзину ${countAdd} раз `);
+              console.log(`Добавили в корзину раз `);
             }}
             onClickFav={() => console.log('Добавили в закладки')} />
         ))}

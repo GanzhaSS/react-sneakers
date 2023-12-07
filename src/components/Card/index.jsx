@@ -11,6 +11,10 @@ const Card = (props) => {
         console.log(props.title + isAdded);
     }
 
+    React.useEffect(() => {
+        console.log('Переменная изменилась');
+    }, [isAdded]);
+
     return (
         <div className={styles.card}>
             <div className={styles.favorite} onClick={props.onClickFav}>
@@ -31,4 +35,4 @@ const Card = (props) => {
     )
 };
 
-export default Card;
+export default Card; 

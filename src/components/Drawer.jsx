@@ -1,6 +1,6 @@
 const Drawer = () => {
     return (
-        <div style={{ display: 'none' }} className="overlay">
+        <div className="overlay">
             <div className="drawer  d-flex flex-column">
                 <h2 className="d-flex mb-30 justify-between">
                     Корзина
