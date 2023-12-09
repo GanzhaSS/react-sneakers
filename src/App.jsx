@@ -3,20 +3,17 @@ import Card from './components/Card';
 import Header from "./components/Header";
 import Drawer from './components/Drawer';
 
-const arrCards = [
-  { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, imageURL: "/img/sneakers/1.jpg" },
-  { title: 'Мужские Кроссовки Nike Air Max 270', price: 13333, imageURL: "/img/sneakers/2.jpg" },
-  { title: 'Мужские Кроссовки Nike Air Max 270', price: 14444, imageURL: "/img/sneakers/3.jpg" },
-  { title: 'Мужские Кроссовки Nike Air Max 2705', price: 12222, imageURL: "/img/sneakers/4.jpg" }
-]
+const arrCards = []
 const App = () => {
 
   const [cartOpened, setCartOpened] = React.useState(false);
   return (
 
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {cartOpened ? <Drawer onClickClose={() => setCartOpened(false)} /> : null}
+      <Header
+        onClickCart={() => setCartOpened(true)}
+      />
       <div className="content p-40 d-flex align-center justify-between">
         <h1>Все кроссовки</h1>
         <div className="search-block d-flex">

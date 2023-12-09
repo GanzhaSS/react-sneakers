@@ -1,10 +1,11 @@
-const Drawer = () => {
+const Drawer = (props) => {
+    console.log(props);
     return (
         <div className="overlay">
             <div className="drawer  d-flex flex-column">
                 <h2 className="d-flex mb-30 justify-between">
                     Корзина
-                    <img className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
+                    <img onClick={props.onClickClose} className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
                 </h2>
 
                 <div className="items">
