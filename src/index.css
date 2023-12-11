@@ -88,7 +88,7 @@ h2 {
 }
 .cartItem .cartItemImg {
   height: 70px;
-  width: 70px;
+  width: 100px;
   background-size: contain;
   background-position: 0 10px;
   background-repeat: no-repeat;
@@ -156,4 +156,4 @@ h2 {
 }
 .greenButton:active {
   background: #85c832;
-}
+}/*# sourceMappingURL=index.css.map */
