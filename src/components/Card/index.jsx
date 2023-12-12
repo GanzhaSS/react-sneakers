@@ -12,7 +12,7 @@ const Card = ({ title,
     const [isAdded, setAdded] = React.useState(false);
 
     const onClickPlus = () => {
-        onClickAdd();
+        onClickAdd({ title, imageURL, price });
         setAdded(!isAdded);
     }
 

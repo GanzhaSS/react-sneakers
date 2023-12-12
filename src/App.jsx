@@ -17,8 +17,12 @@ const App = () => {
     })
   }, [])
 
-  const onAddToCart = () => {
-    alert('123');
+  const onAddToCart = (obj) => {
+    // alert('123');
+    console.log(obj);
+    if (!cartItems.includes(obj)) {
+      setCartItems(prev => [...prev, obj]);
+    }
   }
 
   return (
@@ -36,13 +40,14 @@ const App = () => {
         </div>
       </div>
       <div className="d-flex  flex-wrap p-40 ">
-        {items.map((obj) => (
+        {items.map((item) => (
           <Card
-            title={obj.title}
-            price={obj.price}
-            imageURL={obj.imageURL}
-            onClickAdd={() => {
-              onAddToCart();
+            title={item.title}
+            price={item.price}
+            imageURL={item.imageURL}
+            onClickAdd={(obj) => {
+              onAddToCart(obj);
+              console.log(obj);
             }}
             onClickFav={() => console.log('Добавили в закладки')} />
         ))}
