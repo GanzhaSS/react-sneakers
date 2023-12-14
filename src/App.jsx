@@ -40,8 +40,9 @@ const App = () => {
         </div>
       </div>
       <div className="d-flex  flex-wrap p-40 ">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <Card
+            key={index}
             title={item.title}
             price={item.price}
             imageURL={item.imageURL}
