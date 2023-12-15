@@ -7,6 +7,7 @@ import Drawer from './components/Drawer';
 const App = () => {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState("");
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
@@ -18,11 +19,14 @@ const App = () => {
   }, [])
 
   const onAddToCart = (obj) => {
-    // alert('123');
     console.log(obj);
-    if (!cartItems.includes(obj)) {
+    if (!obj.isAdded) {
       setCartItems(prev => [...prev, obj]);
     }
+  }
+
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value)
   }
 
   return (
@@ -33,16 +37,16 @@ const App = () => {
         onClickCart={() => setCartOpened(true)}
       />
       <div className="content p-40 d-flex align-center justify-between">
-        <h1>Все кроссовки</h1>
+        <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
         <div className="search-block d-flex">
           <img src="/img/icons/search.svg" alt="Search" />
-          <input placeholder="Поиск ..." />
+          <input onChange={onChangeSearchInput} placeholder="Поиск ..." />
         </div>
       </div>
       <div className="d-flex  flex-wrap p-40 ">
         {items.map((item, index) => (
           <Card
-            key={index}
+            key={index + item.title}
             title={item.title}
             price={item.price}
             imageURL={item.imageURL}
