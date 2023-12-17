@@ -1,10 +1,10 @@
-const Drawer = ({ onClose, items = [] }) => {
+const Drawer = ({ onClose, items = [], onRemove }) => {
     return (
         <div className="overlay">
             <div className="drawer  d-flex flex-column">
                 <h2 className="d-flex mb-30 justify-between">
                     Корзина
-                    <img onClick={onClose} className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
+                    <img onClick={onClose} className="btnRemove" src="/img/icons/btn-remove.svg" alt="Click" />
                 </h2>
 
                 <div className="items">
@@ -18,7 +18,7 @@ const Drawer = ({ onClose, items = [] }) => {
                                 </p>
                                 <b>{obj.price}</b>
                             </div>
-                            <img className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
+                            <img onClick={() => onRemove(obj.id)} className="btnRemove" src="/img/icons/btn-remove.svg" alt="Remove" />
                         </div>
                     ))}
 
