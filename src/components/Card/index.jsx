@@ -10,16 +10,23 @@ const Card = ({ title,
     onClickFav }) => {
 
     const [isAdded, setAdded] = React.useState(false);
+    const [itemFavorite, setItemFavorite] = React.useState(false);
 
     const onClickPlus = () => {
         onClickAdd({ title, imageURL, price });
         setAdded(!isAdded);
     }
+    const onClickAddFav = () => {
+        onClickFav();
+        setItemFavorite(!itemFavorite);
+    }
 
     return (
         <div className={styles.card}>
-            <div className={styles.favorite} onClick={onClickFav}>
-                <img src="/img/icons/unliked.svg" alt="Unliked" />
+            <div className={styles.favorite} onClick={onClickAddFav}>
+                <img
+                    src={itemFavorite ? "/img/icons/liked.svg" : "/img/icons/unliked.svg"}
+                    alt="Unliked" />
             </div>
             <img width={133} height={112} src={imageURL} alt="" />
             <h5>{title}</h5>
