@@ -17,7 +17,7 @@ const Card = ({ title,
         setAdded(!isAdded);
     }
     const onClickAddFav = () => {
-        onClickFav();
+        onClickFav({ title, imageURL, price });
         setItemFavorite(!itemFavorite);
     }
 
