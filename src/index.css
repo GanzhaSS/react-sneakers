@@ -38,6 +38,14 @@ header {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+}
+.search-block .clear {
+  position: absolute;
+  right: 15px;
+  width: 18px;
+  height: 18px;
+  top: 13px;
 }
 
 input {
@@ -156,4 +164,4 @@ h2 {
 }
 .greenButton:active {
   background: #85c832;
-}/*# sourceMappingURL=index.css.map */
+}

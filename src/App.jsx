@@ -1,8 +1,12 @@
+import { Outlet, Link } from "react-router-dom";
+import { Route } from 'react-router-dom';
+
 import React from "react";
 import axios from "axios";
 import Card from './components/Card';
 import Header from "./components/Header";
 import Drawer from './components/Drawer';
+
 
 // const arrCards = []
 const App = () => {
@@ -64,6 +68,8 @@ const App = () => {
       <Header
         onClickCart={() => setCartOpened(true)}
       />
+
+
       <div className="content p-40 d-flex align-center justify-between">
         <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
         <div className="search-block d-flex">
@@ -71,6 +77,7 @@ const App = () => {
           {searchValue ? <img className="clear" onClick={onClickClear} src="/img/icons/btn-remove.svg" alt="Clear" /> : null}
           <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск ..." />
         </div>
+
       </div>
       <div className="d-flex  flex-wrap p-40 ">
         {items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
