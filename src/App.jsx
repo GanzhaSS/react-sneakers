@@ -34,8 +34,9 @@ const App = () => {
     setCartItems(prev => [...prev, obj]);
   }
   const onRemoveItem = (id) => {
-    axios.delete(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart/${id}`);
-    setCartItems(prev => prev.filter(item => item.id !== id));
+    console.log('id: ', id);
+    // axios.delete(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart/${id}`);
+    // setCartItems((prev) => prev.filter((item) => item.id !== id));
   }
   const onAddToFav = (obj) => {
     axios.post('https://6581496f3dfdd1b11c42dbc1.mockapi.io/Favorits', obj);
@@ -83,7 +84,7 @@ const App = () => {
         {items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
           .map((item, index) => (
             <Card
-              key={index + item.title}
+              key={index}
               title={item.title}
               price={item.price}
               imageURL={item.imageURL}
