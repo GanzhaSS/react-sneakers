@@ -49,7 +49,7 @@ const Drawer = ({ onClose, items = [], onRemove }) => {
                             <p className="opacity-6">
                                 Добавьте хотя бы одну пару кроссовок, чтобы сдлать заказ
                             </p>
-                            <button className="greenButton">
+                            <button onClick={onClose} className="greenButton">
                                 Вернуться
                             </button>
                         </div>
