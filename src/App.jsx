@@ -1,12 +1,12 @@
-import { Outlet, Link } from "react-router-dom";
-import { Route } from 'react-router-dom';
+import { Outlet, Link, Routes } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import React from "react";
 import axios from "axios";
-import Card from './components/Card';
 import Header from "./components/Header";
 import Drawer from './components/Drawer';
-
+import Favorites from "./components/Favorites";
+// import Home from "./pages/Home";
 
 // const arrCards = []
 const App = () => {
@@ -58,49 +58,24 @@ const App = () => {
   }
 
   return (
-
     <div className="wrapper clear">
-      {cartOpened ?
-        <Drawer
-          items={cartItems}
-          onClose={() => setCartOpened(false)}
-          onRemove={onRemoveItem}
-        /> : null}
+      {
+        cartOpened ?
+          <Drawer
+            items={cartItems}
+            onClose={() => setCartOpened(false)}
+            onRemove={onRemoveItem}
+          /> : null}
       <Header
         onClickCart={() => setCartOpened(true)}
       />
 
+      <Routes>
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
 
-      <div className="content p-40 d-flex align-center justify-between">
-        <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
-        <div className="search-block d-flex">
-          <img src="/img/icons/search.svg" alt="Search" />
-          {searchValue ? <img className="clear" onClick={onClickClear} src="/img/icons/btn-remove.svg" alt="Clear" /> : null}
-          <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск ..." />
-        </div>
 
-      </div>
-      <div className="d-flex  flex-wrap p-40 ">
-        {items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item, index) => (
-            <Card
-              key={index}
-              title={item.title}
-              price={item.price}
-              imageURL={item.imageURL}
-              onClickAdd={(obj) => {
-                onAddToCart(obj);
-                console.log(obj);
-              }}
-              onClickFav={(obj) => {
-                onAddToFav(obj);
-                // obj.itemFavorite ? onAddToFav(obj) : onRemoveFromFav(obj.id);
-                console.log('Добавили в закладки');
-              }
-              } />
-          ))}
-
-      </div>
     </div >
   );
 }
