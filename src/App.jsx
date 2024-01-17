@@ -1,12 +1,11 @@
-import { Outlet, Link, Routes } from "react-router-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import React from "react";
 import axios from "axios";
 import Header from "./components/Header";
 import Drawer from './components/Drawer';
-import Favorites from "./components/Favorites";
-// import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
+import Home from "./pages/Home";
 
 // const arrCards = []
 const App = () => {
@@ -71,8 +70,17 @@ const App = () => {
       />
 
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/" element={<Home
+          items={items}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          onChangeSearchInput={onChangeSearchInput}
+          onAddToFav={onAddToFav}
+          onAddToCart={onAddToCart}
+          onClickClear={onClickClear}
+        />} />
+
+        <Route path="/favorites" element={<Favorites items={favorits} />} />
       </Routes>
 
 
