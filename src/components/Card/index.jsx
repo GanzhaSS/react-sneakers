@@ -10,15 +10,16 @@ const Card = ({ id,
     onClickAdd,
     onClickFav,
     isFavorite = false }) => {
-
     const [isAdded, setAdded] = React.useState(false);
     const [itemFavorite, setItemFavorite] = React.useState(isFavorite);
 
     const onClickPlus = () => {
-        onClickAdd({ title, imageURL, price });
+        onClickAdd({ id, title, imageURL, price });
         setAdded(!isAdded);
     }
     const onClickAddFav = () => {
+        console.log('onClickAddFav ');
+        console.log({ id });
         onClickFav({ id, title, imageURL, price });
         setItemFavorite(!itemFavorite);
     }

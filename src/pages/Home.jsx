@@ -23,19 +23,15 @@ function Home({ items,
                     .map((item, index) => (
                         <Card
                             key={index}
-                            title={item.title}
-                            price={item.price}
-                            imageURL={item.imageURL}
                             onClickAdd={(obj) => {
                                 onAddToCart(obj);
-                                console.log(obj);
+
                             }}
                             onClickFav={(obj) => {
                                 onAddToFav(obj);
-                                // obj.itemFavorite ? onAddToFav(obj) : onRemoveFromFav(obj.id);
-                                console.log('Добавили в закладки');
                             }
-                            } />
+                            }
+                            {...item} />
                     ))}
 
             </div>
