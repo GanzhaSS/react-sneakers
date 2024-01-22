@@ -38,14 +38,18 @@ const App = () => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   }
   const onAddToFav = async (obj) => {
-    if (favorits.find((favObj) => favObj.id === obj.id)) {
-      console.log('obj.id ');
-      console.log(`${obj.id}`);
-      await axios.delete(`https://6581496f3dfdd1b11c42dbc1.mockapi.io/Favorits/${obj.id}`);
-      setFavorits((prev) => prev.filter((item) => item.id !== obj.id));
-    } else {
-      const { data } = await axios.post(`https://6581496f3dfdd1b11c42dbc1.mockapi.io/Favorits`, obj);
-      setFavorits((prev) => [...prev, data]);
+    try {
+      if (favorits.find((favObj) => favObj.id === obj.id)) {
+        console.log('obj.id ');
+        console.log(`${obj.id}`);
+        await axios.delete(`https://6581496f3dfdd1b11c42dbc1.mockapi.io/Favorits/${obj.id}`);
+        setFavorits((prev) => prev.filter((item) => item.id !== obj.id));
+      } else {
+        const { data } = await axios.post(`https://6581496f3dfdd1b11c42dbc1.mockapi.io/Favorits`, obj);
+        setFavorits((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert('Не удалось доавить в Закладки');
     }
   }
 
