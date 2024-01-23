@@ -18,8 +18,6 @@ const Card = ({ id,
         setAdded(!isAdded);
     }
     const onClickAddFav = () => {
-        console.log('onClickAddFav ');
-        console.log({ id });
         onClickFav({ id, title, imageURL, price });
         setItemFavorite(!itemFavorite);
     }
