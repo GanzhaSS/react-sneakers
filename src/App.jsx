@@ -29,11 +29,18 @@ const App = () => {
   }, [])
 
   const onAddToCart = async (obj) => {
-    if (cartItems.find((cartObj) => cartObj.id === Number(obj.id))) {
-      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
-    } else {
-      axios.post(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart`, obj);
-      setCartItems((prev) => [...prev, obj]);
+    console.log('___ obj.id  ' + obj.id);
+    try {
+      if (cartItems.find((cartObj) => Number(cartObj.id) === Number(obj.id))) {
+
+        axios.delete(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart/${obj.id}`);
+        setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
+      } else {
+        const { data } = axios.post(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart`, obj);
+        setCartItems((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert('Не удалось доавить в Корзину');
     }
 
     // try {
