@@ -28,6 +28,7 @@ function Home({ items,
                             onClickAdd={(obj) => { onAddToCart(obj); }}
                             onClickFav={(obj) => { onAddToFav(obj); }}
                             isAddToCart={cartItems.some(obj => Number(obj.mainId) === Number(item.mainId))}
+                            isLoading={true}
                             {...item} />
                     ))}
 
