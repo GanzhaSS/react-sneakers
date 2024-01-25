@@ -3,6 +3,7 @@ import Card from '../components/Card';
 function Home({ items,
     searchValue,
     setSearchValue,
+    cartItems,
     onChangeSearchInput,
     onAddToFav,
     onAddToCart,
@@ -23,14 +24,10 @@ function Home({ items,
                     .map((item, index) => (
                         <Card
                             key={index}
-                            onClickAdd={(obj) => {
-                                onAddToCart(obj);
-
-                            }}
-                            onClickFav={(obj) => {
-                                onAddToFav(obj);
-                            }
-                            }
+                            mainId={index}
+                            onClickAdd={(obj) => { onAddToCart(obj); }}
+                            onClickFav={(obj) => { onAddToFav(obj); }}
+                            isAddToCart={cartItems.some(obj => Number(obj.mainId) === Number(item.mainId))}
                             {...item} />
                     ))}
 

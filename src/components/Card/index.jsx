@@ -4,21 +4,23 @@ import styles from "./Card.module.scss";
 console.log(styles);
 
 const Card = ({ id,
+    mainId,
     title,
     price,
     imageURL,
     onClickAdd,
     onClickFav,
+    isAddToCart = false,
     isFavorite = false }) => {
-    const [isAdded, setAdded] = React.useState(false);
+    const [isAdded, setAdded] = React.useState(isAddToCart);
     const [itemFavorite, setItemFavorite] = React.useState(isFavorite);
 
     const onClickPlus = () => {
-        onClickAdd({ id, title, imageURL, price });
+        onClickAdd({ id, mainId, title, imageURL, price });
         setAdded(!isAdded);
     }
     const onClickAddFav = () => {
-        onClickFav({ id, title, imageURL, price });
+        onClickFav({ id, mainId, title, imageURL, price });
         setItemFavorite(!itemFavorite);
     }
 

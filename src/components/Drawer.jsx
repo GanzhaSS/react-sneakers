@@ -1,4 +1,7 @@
-const Drawer = ({ onClose, items = [], onRemove }) => {
+const Drawer = ({ onClose,
+    items = [],
+    onRemove }) => {
+    console.log(items);
     return (
         <div className="overlay">
             <div className="drawer  d-flex flex-column">

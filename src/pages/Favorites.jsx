@@ -11,7 +11,7 @@ const Favorites = ({ items, onAddToFav }) => {
             <div className="d-flex  flex-wrap p-40 ">
                 {items.map((item, index) => (
                     <Card
-                        key={index}
+                        mainId={index}
                         isFavorite={true}
                         onClickFav={onAddToFav}
                         {...item}
