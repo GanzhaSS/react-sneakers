@@ -30,14 +30,12 @@ const Card = ({ id,
         <div className={styles.card}>
             {
                 isLoading ? <ContentLoader
-                    speed={0}
+                    speed={2}
                     width={265}
                     height={190}
                     viewBox="0 0 265 190"
                     backgroundColor="#f3f3f3"
-                    foregroundColor="#ecebeb"
-                // {...props}
-                >
+                    foregroundColor="#ecebeb">
                     <rect x="418" y="349" rx="2" ry="2" width="140" height="10" />
                     <rect x="418" y="365" rx="2" ry="2" width="140" height="10" />
                     <rect x="0" y="0" rx="10" ry="10" width="150" height="90" />
@@ -67,8 +65,7 @@ const Card = ({ id,
                         </div>
                     </div>
                 </>
-            }
-        </div>
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </div>
     )
 };
 
