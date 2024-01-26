@@ -7,7 +7,26 @@ function Home({ items,
     onChangeSearchInput,
     onAddToFav,
     onAddToCart,
-    onClickClear }) {
+    onClickClear,
+    isLoadingPage }) {
+
+    const renderItems = () => {
+        const filtredItems = items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()));
+        return (
+            isLoadingPage
+                ? [...Array(6)]
+                : filtredItems)
+            .map((item, index) => (
+                <Card
+                    key={index}
+                    mainId={index}
+                    onClickAdd={(obj) => { onAddToCart(obj); }}
+                    onClickFav={(obj) => { onAddToFav(obj); }}
+                    isAddToCart={cartItems.some(obj => Number(obj.mainId) === Number(item.mainId))}
+                    isLoading={isLoadingPage}
+                    {...item} />
+            ))
+    }
     return (
         <div className="content p-40">
             <div className="d-flex align-center justify-between mb-40">
@@ -20,17 +39,7 @@ function Home({ items,
 
             </div >
             <div className="d-flex  flex-wrap p-40 ">
-                {items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-                    .map((item, index) => (
-                        <Card
-                            key={index}
-                            mainId={index}
-                            onClickAdd={(obj) => { onAddToCart(obj); }}
-                            onClickFav={(obj) => { onAddToFav(obj); }}
-                            isAddToCart={cartItems.some(obj => Number(obj.mainId) === Number(item.mainId))}
-                            isLoading={true}
-                            {...item} />
-                    ))}
+                {renderItems()}
 
             </div>
         </div >
