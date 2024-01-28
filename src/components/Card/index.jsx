@@ -3,25 +3,25 @@ import styles from "./Card.module.scss";
 import ContentLoader from "react-content-loader";
 import AppContext from "../Context";
 
-const Card = ({ id,
-    mainId,
+const Card = ({
+    id,
     title,
     price,
     imageURL,
     onClickAdd,
     onClickFav,
-    isAddToCart = false,
     isFavorite = false,
     isLoading = false }) => {
-    const [isAdded, setAdded] = React.useState(isAddToCart);
+    const { isItemAdded } = React.useContext(AppContext);
     const [itemFavorite, setItemFavorite] = React.useState(isFavorite);
 
+    // console.log(`card ${id} is added: ${isItemAdded(id)}`);
+    console.log(title, isItemAdded(id));
     const onClickPlus = () => {
-        onClickAdd({ id, mainId, title, imageURL, price });
-        setAdded(!isAdded);
+        onClickAdd({ id, title, imageURL, price });
     }
     const onClickAddFav = () => {
-        onClickFav({ id, mainId, title, imageURL, price });
+        onClickFav({ id, title, imageURL, price });
         setItemFavorite(!itemFavorite);
     }
 
@@ -59,7 +59,7 @@ const Card = ({ id,
                             <img
                                 className={styles.plus}
                                 onClick={onClickPlus}
-                                src={isAdded ? "/img/icons/btn-plus-filled.svg" : "/img/icons/btn-plus-empty.svg"}
+                                src={isItemAdded(id) ? "/img/icons/btn-plus-filled.svg" : "/img/icons/btn-plus-empty.svg"}
                                 alt="Plus" />
                         </div>
                     </div>
