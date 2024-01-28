@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./Card.module.scss";
 import ContentLoader from "react-content-loader";
-
-console.log(styles);
+import AppContext from "../Context";
 
 const Card = ({ id,
     mainId,

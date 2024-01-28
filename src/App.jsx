@@ -6,8 +6,8 @@ import Header from "./components/Header";
 import Drawer from './components/Drawer';
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
+import AppContext from "./components/Context";
 
-// const arrCards = []
 const App = () => {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
@@ -36,10 +36,10 @@ const App = () => {
   const onAddToCart = async (obj) => {
     console.log('___ obj.mainId  ' + obj.mainId);
     try {
-      if (cartItems.find((cartObj) => Number(cartObj.mainId) === Number(obj.mainId))) {
+      if (cartItems.find((cartObj) => Number(cartObj.id) === Number(obj.id))) {
         console.log('DELETE');
         axios.delete(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart/${obj.id}`);
-        setCartItems((prev) => prev.filter((item) => Number(item.mainId) !== Number(obj.mainId)));
+        setCartItems((prev) => prev.filter((item) => Number(item.mainId) !== Number(obj.id)));
       } else {
         console.log('ADD');
         const { data } = axios.post(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart`, obj);
@@ -78,39 +78,44 @@ const App = () => {
     setSearchValue('')
   }
 
+  const isItemAdded = (id) => {
+    return cartItems.some((obj) => Number(obj.id) === Number(id));
+  }
+
   return (
-    <div className="wrapper clear">
-      {
-        cartOpened ?
-          <Drawer
-            items={cartItems}
-            onClose={() => setCartOpened(false)}
-            onRemove={onRemoveItem}
-          /> : null}
-      <Header
-        onClickCart={() => setCartOpened(true)}
-      />
+    <AppContext.Provider value={{ items, cartItems, favorits, isItemAdded }}>
+      <div className="wrapper clear">
+        {
+          cartOpened ?
+            <Drawer
+              items={cartItems}
+              onClose={() => setCartOpened(false)}
+              onRemove={onRemoveItem}
+            /> : null}
+        <Header
+          onClickCart={() => setCartOpened(true)}
+        />
 
-      <Routes>
-        <Route path="/" element={<Home
-          items={items}
-          cartItems={cartItems}
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          onChangeSearchInput={onChangeSearchInput}
-          onAddToFav={onAddToFav}
-          onAddToCart={onAddToCart}
-          onClickClear={onClickClear}
-          isLoadingPage={isLoadingPage}
-        />} />
+        <Routes>
+          <Route path="/" element={<Home
+            items={items}
+            cartItems={cartItems}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            onChangeSearchInput={onChangeSearchInput}
+            onAddToFav={onAddToFav}
+            onAddToCart={onAddToCart}
+            onClickClear={onClickClear}
+            isLoadingPage={isLoadingPage}
+          />} />
 
-        <Route path="/favorites" element={<Favorites
-          items={favorits}
-          onAddToFav={onAddToFav} />} />
-      </Routes>
+          <Route path="/favorites" element={<Favorites
+            onAddToFav={onAddToFav} />} />
+        </Routes>
 
 
-    </div >
+      </div >
+    </AppContext.Provider>
   );
 }
 

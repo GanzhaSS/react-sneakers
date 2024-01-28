@@ -1,4 +1,6 @@
 import Card from '../components/Card';
+import AppContext from "../components/Context";
+import React from 'react';
 
 function Home({ items,
     searchValue,
@@ -9,24 +11,26 @@ function Home({ items,
     onAddToCart,
     onClickClear,
     isLoadingPage }) {
-
+    const { isItemAdded } = React.useContext(AppContext);
     const renderItems = () => {
+
         const filtredItems = items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()));
         return (
             isLoadingPage
                 ? [...Array(6)]
-                : filtredItems)
-            .map((item, index) => (
-                <Card
-                    key={index}
-                    mainId={index}
-                    onClickAdd={(obj) => { onAddToCart(obj); }}
-                    onClickFav={(obj) => { onAddToFav(obj); }}
-                    isAddToCart={cartItems.some(obj => Number(obj.mainId) === Number(item.mainId))}
-                    isLoading={isLoadingPage}
-                    {...item} />
-            ))
+                : filtredItems).map((item, index) => (
+                    <Card
+                        key={index}
+                        mainId={index}
+                        onClickAdd={(obj) => { onAddToCart(obj); }}
+                        onClickFav={(obj) => { onAddToFav(obj); }}
+                        isAddToCart={isItemAdded(item && item.id)}
+                        isLoading={isLoadingPage}
+                        {...item} />
+                ))
     }
+
+
     return (
         <div className="content p-40">
             <div className="d-flex align-center justify-between mb-40">
