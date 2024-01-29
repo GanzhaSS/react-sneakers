@@ -1,7 +1,15 @@
+import React from "react";
+import Info from "./Info";
+
 const Drawer = ({ onClose,
     items = [],
     onRemove }) => {
-    console.log(items);
+
+    const [isCompleted, setIsCompleted] = React.useState(false);
+    const onClickOrder = () => {
+        setIsCompleted(true);
+    }
+
     return (
         <div className="overlay">
             <div className="drawer  d-flex flex-column">
@@ -10,7 +18,8 @@ const Drawer = ({ onClose,
                     <img onClick={onClose} className="btnRemove" src="/img/icons/btn-remove.svg" alt="Click" />
                 </h2>
                 {
-                    items.length > 0 ?
+                    items.length > 0
+                        ?
                         <div className="d-flex flex-column flex">
                             <div className="items">
                                 {items.map((obj) => (
@@ -39,15 +48,18 @@ const Drawer = ({ onClose,
                                         <b>1074 руб.</b>
                                     </li>
                                 </ul>
-                                <button className="greenButton">
+                                <button onClick={onClickOrder} className="greenButton">
                                     Оформить заказ
                                     <img src="/img/icons/arrow.svg" alt="Arrow" />
                                 </button>
                             </div>
                         </div>
-                        : (
-                 
-                )}
+                        :
+                        (<Info
+                            title="Корзина пустая"
+                            description="Добавьте хотя бы одну пару кроссовок"
+                            image="/img/icons/empty_cart.svg"
+                        />)}
             </div>
         </div>
     )

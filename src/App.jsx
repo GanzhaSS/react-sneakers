@@ -83,7 +83,7 @@ const App = () => {
   }
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favorits, isItemAdded }}>
+    <AppContext.Provider value={{ items, cartItems, favorits, isItemAdded, setCartOpened }}>
       <div className="wrapper clear">
         {
           cartOpened ?
