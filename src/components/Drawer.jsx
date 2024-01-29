@@ -11,7 +11,7 @@ const Drawer = ({ onClose,
                 </h2>
                 {
                     items.length > 0 ?
-                        <div>
+                        <div className="d-flex flex-column flex">
                             <div className="items">
                                 {items.map((obj) => (
                                     <div key={obj.id} className="cartItem d-flex align-center mb-20">
@@ -45,18 +45,9 @@ const Drawer = ({ onClose,
                                 </button>
                             </div>
                         </div>
-                        :
-                        <div className="d-flex align-center justify-center flex-column flex">
-                            <img className="mb-20" src="/img/icons/empty_cart.svg" alt="Empty Cart" />
-                            <h2>Корзина пустая</h2>
-                            <p className="opacity-6">
-                                Добавьте хотя бы одну пару кроссовок, чтобы сдлать заказ
-                            </p>
-                            <button onClick={onClose} className="greenButton">
-                                Вернуться
-                            </button>
-                        </div>
-                }
+                        : (
+                 
+                )}
             </div>
         </div>
     )
