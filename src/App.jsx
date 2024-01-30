@@ -83,7 +83,7 @@ const App = () => {
   }
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favorits, isItemAdded, setCartOpened }}>
+    <AppContext.Provider value={{ items, cartItems, favorits, isItemAdded, setCartOpened, setCartItems }}>
       <div className="wrapper clear">
         {
           cartOpened ?
@@ -112,9 +112,8 @@ const App = () => {
           <Route path="/favorites" element={<Favorites
             onAddToFav={onAddToFav} />} />
         </Routes>
-
-
       </div >
+
     </AppContext.Provider>
   );
 }

@@ -74,7 +74,7 @@ input {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: hsla(0, 0%, 0%, 0.4);
   z-index: 1;
 }
@@ -164,4 +164,8 @@ h2 {
 }
 .greenButton:active {
   background: #85c832;
-}/*# sourceMappingURL=index.css.map */
+}
+.greenButton:disabled {
+  background-color: #C4C4C4;
+  cursor: default;
+}

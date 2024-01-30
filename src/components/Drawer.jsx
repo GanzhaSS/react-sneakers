@@ -1,13 +1,29 @@
+import Info from '../Info';
 import React from "react";
-import Info from "./Info";
+import AppContext from './Context';
+import axios from "axios";
 
 const Drawer = ({ onClose,
     items = [],
     onRemove }) => {
 
+    const [isLoadingPage, setIsLoadingPage] = React.useState(true);
+    const { cartItems, setCartItems } = React.useContext(AppContext);
     const [isCompleted, setIsCompleted] = React.useState(false);
-    const onClickOrder = () => {
-        setIsCompleted(true);
+    const [orderID, setOrderID] = React.useState(null);
+
+    const onClickOrder = async () => {
+        try {
+            setIsLoadingPage(true);
+            const { data } = await axios.post(`https://6581496f3dfdd1b11c42dbc1.mockapi.io/Orders`, { items: cartItems });
+            await axios.put(`https://6574bd6fb2fbb8f6509c9c36.mockapi.io/Cart/`, []);
+            setOrderID(data.id);
+            setIsCompleted(true);
+            setCartItems([]);
+        } catch (error) {
+            alert("Не удалось создать заказ");
+        }
+        setIsLoadingPage(false);
     }
 
     return (
@@ -48,7 +64,7 @@ const Drawer = ({ onClose,
                                         <b>1074 руб.</b>
                                     </li>
                                 </ul>
-                                <button onClick={onClickOrder} className="greenButton">
+                                <button disabled={isLoadingPage} onClick={onClickOrder} className="greenButton">
                                     Оформить заказ
                                     <img src="/img/icons/arrow.svg" alt="Arrow" />
                                 </button>
@@ -56,9 +72,9 @@ const Drawer = ({ onClose,
                         </div>
                         :
                         (<Info
-                            title="Корзина пустая"
-                            description="Добавьте хотя бы одну пару кроссовок"
-                            image="/img/icons/empty_cart.svg"
+                            title={isCompleted ? "Заказ оформлен" : "Корзина пустая"}
+                            description={isCompleted ? `Ваш заказ ${orderID} передан курьерской службе` : "Добавьте хотя бы одну пару кроссовок"}
+                            image={isCompleted ? "/img/icons/complete_order.svg" : "/img/icons/empty_cart.svg"}
                         />)}
             </div>
         </div>
